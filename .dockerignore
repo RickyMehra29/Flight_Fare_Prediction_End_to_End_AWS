@@ -1,0 +1,16 @@
+artifact
+logs
+notebook
+prediction
+saved_models
+*.egg-info
+.env
+batch_prediction.py
+data_dump.py
+main.py
+README.md
+Prediction_Output
+input_files
+Flight_check_test_df.xlsx
+Flight_check_train_df.xlsx
+Flight_check_prediction_df.xlsx
