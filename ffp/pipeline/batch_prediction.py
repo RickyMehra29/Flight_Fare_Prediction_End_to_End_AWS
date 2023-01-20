@@ -18,8 +18,7 @@ reset_cols = ['Date', 'Month', 'Dep_Time_hour', 'Dep_Time_min', 'Arrival_Time_ho
                     'Duration_hour','Duration_min','Airline','Source', 'Destination','Total_Stops', 'Additional_Info']
 
 Airline_TRANSFORMER_OBJECT_FILE_NAME= "Airline_transformer.pkl"
-Source_TRANSFORMER_OBJECT_FILE_NAME= "Source_transformer.pkl"
-Destination_TRANSFORMER_OBJECT_FILE_NAME= "Destination_transformer.pkl"
+Source_Destination_TRANSFORMER_OBJECT_FILE_NAME= "Source_Destination_transformer.pkl"
 Total_Stops_TRANSFORMER_OBJECT_FILE_NAME= "Total_Stops_transformer.pkl"
 Additional_Info_TRANSFORMER_OBJECT_FILE_NAME= "Additional_Info_transformer.pkl"
 
@@ -46,16 +45,15 @@ def start_batch_prediction(input_file_path):
         model_resolver = ModelResolver(model_registry="saved_models")
 
         Airline_transformer = utils.load_object(file_path=model_resolver.get_latest_transformer_path(Airline_TRANSFORMER_OBJECT_FILE_NAME))
-        Source_transformer = utils.load_object(file_path=model_resolver.get_latest_transformer_path(Source_TRANSFORMER_OBJECT_FILE_NAME))
-        Destination_transformer = utils.load_object(file_path=model_resolver.get_latest_transformer_path(Destination_TRANSFORMER_OBJECT_FILE_NAME))
+        Source_Destination_transformer = utils.load_object(file_path=model_resolver.get_latest_transformer_path(Source_Destination_TRANSFORMER_OBJECT_FILE_NAME))
         Total_Stops_transformer = utils.load_object(file_path=model_resolver.get_latest_transformer_path(Total_Stops_TRANSFORMER_OBJECT_FILE_NAME))
         Additional_Info_transformer = utils.load_object(file_path=model_resolver.get_latest_transformer_path(Additional_Info_TRANSFORMER_OBJECT_FILE_NAME))
 
         print(Airline_transformer)
 
         prediction_df['Airline'] = prediction_df['Airline'].map(Airline_transformer)
-        prediction_df['Source'] = prediction_df['Source'].map(Source_transformer)
-        prediction_df['Destination'] = prediction_df['Destination'].map(Destination_transformer)
+        prediction_df['Source'] = prediction_df['Source'].map(Source_Destination_transformer)
+        prediction_df['Destination'] = prediction_df['Destination'].map(Source_Destination_transformer)
         prediction_df['Total_Stops'] = prediction_df['Total_Stops'].map(Total_Stops_transformer)
         prediction_df['Additional_Info'] = prediction_df['Additional_Info'].map(Additional_Info_transformer)
 

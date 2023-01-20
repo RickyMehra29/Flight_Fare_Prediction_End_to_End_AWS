@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flight Price Prediction</title>
+
+
+  <!-- BootStrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+  <!-- css -->
+  <link rel="stylesheet" href="static/css/styles.css">
+
+
+</head>
+
+<body style="background-color:#e4e5e6";>
+ <div class="login">
+	<h1 style="background-color:#009FFD" >Flight Fare Prediction</h1>
+  <style> h1 {text-align: center; } </style>
+
+    </head>
+    <body>
+    
+    
+    <div class="container">
+
+     <!-- Main Input For Receiving Query to our ML -->
+      <table>
+        <form action="{{ url_for('predict_api')}}"method="post">
+            
+          <tr>
+            <td>
+                <label style="font-weight: bold;">
+                  Departure Date & Time:
+                </label>
+            </td>
+            <td><input type="datetime-local" name="Departure Date & Time" placeholder="Departure Date & Time" required="required" /><br>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+                <label style="font-weight: bold;">
+                  Arrival Time:
+                </label>
+            </td>
+            <td><input type="time" name="Arrival Time" placeholder="Arrival Time" required="required" /><br>
+            </td>
+          </tr>
+
+            <tr>
+              <td>
+                  <label style="font-weight: bold;">
+                    Airline:
+                  </label>
+              </td>
+              <td><select id="Airline" name="Airline" placeholder="Airline">
+                <option value="Jet Airways">Jet Airways</option>
+                <option value="IndiGo">IndiGo</option>
+                <option value="SpiceJet">SpiceJet</option>
+                <option value="Vistara">Vistara</option>
+                <option value="Air Asia">Air Asia</option>
+                <option value="GoAir">GoAir</option>
+                <option value="Multiple carriers Premium economy">Multiple carriers Premium economy</option>
+                <option value="Jet Airways Business">Jet Airways Business</option>
+                <option value="Vistara Premium economy">Vistara Premium economy</option>
+                <option value="Trujet">Trujet</option>
+              </select> <br>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                  <label style="font-weight: bold;">
+                    Source:
+                  </label>
+              </td>
+              <td><select id="Source" name="Source" placeholder="Source">
+                <option value="Banglore">Banglore</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Cochin">Cochin</option>
+                <option value="Hyderabad">Hyderabad</option>
+                </select> <br>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                  <label style="font-weight: bold;">
+                    Destination:
+                  </label>
+              </td>
+              <td><select id="Destination" name="Destination" placeholder="Destination">
+                <option value="Banglore">Banglore</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Cochin">Cochin</option>
+                <option value="Hyderabad">Hyderabad</option>
+                </select> <br>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                  <label style="font-weight: bold;">
+                    Total_Stops:
+                  </label>
+              </td>
+              <td><select id="Total_Stops" name="Total_Stops" placeholder="Total_Stops">
+                <option value="non-stop">non-stop</option>
+                <option value="1 stop">1 stop</option>
+                <option value="2 stops">2 stops</option>
+                <option value="3 stops">3 stops</option>
+                <option value="4 stops">4 stops</option>
+                </select> <br>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                  <label style="font-weight: bold;">
+                    Additional_Info:
+                  </label>
+              </td>
+              <td><select id="Additional_Info" name="Additional_Info" placeholder="Additional_Info">
+                <option value="No info">No info</option>
+                <option value="Business class">Business class</option>
+                <option value="In-flight meal not included">In-flight meal not included</option>
+                <option value="No check-in baggage included">No check-in baggage included</option>
+                <option value="1 Long layover">1 Long layover</option>
+                <option value="2 Long layover">2 Long layover</option>
+                <option value="1 Short layover">1 Short layover</option>
+                <option value="Change airports">Change airports</option>
+                <option value="Red-eye flight">Red-eye flight</option>
+                </select> <br>
+              </td>
+            </tr>
+
+      </table>
+      
+      <br><br>     
+
+        <button  style="font-weight: bold;" type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+  
+ </div>
+ <h3>{{output_text}}</h3>
+ <style> h3 {text-align: center; } </style>
+ <br>
+ <br>
+ 
+     <!-- JavaScript -->
+     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+     crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+     crossorigin="anonymous"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+     crossorigin="anonymous"></script>
+ <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+
+
+
+</body>
+</html>

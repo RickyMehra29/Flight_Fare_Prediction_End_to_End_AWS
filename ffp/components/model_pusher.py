@@ -22,11 +22,10 @@ class ModelPusher:
 
     def initiate_model_pusher(self)-> artifact_entity.ModelPusherArtifact:
         try:
-            #load object
+            #loading objects
             logging.info(f"Loading transformer dictionaries and model")
             Airline_transformer = load_object(file_path=self.data_transformation_artifact.Airline_transformer_object_path)
-            Source_transformer = load_object(file_path=self.data_transformation_artifact.Source_transformer_object_path)
-            Destination_transformer = load_object(file_path=self.data_transformation_artifact.Destination_transformer_object_path)
+            Source_Destination_transformer = load_object(file_path=self.data_transformation_artifact.Source_Destination_transformer_object_path)
             Total_Stops_transformer = load_object(file_path=self.data_transformation_artifact.Total_Stops_transformer_object_path)
             Additional_Info_transformer = load_object(file_path=self.data_transformation_artifact.Additional_Info_transformer_object_path)
 
@@ -35,8 +34,7 @@ class ModelPusher:
             # model pusher dir for local network
             logging.info(f"Saving models into model pusher directory")
             save_object(file_path=self.model_pusher_config.Airline_pusher_transformer_path, obj=Airline_transformer)
-            save_object(file_path=self.model_pusher_config.Source_pusher_transformer_path, obj=Source_transformer)
-            save_object(file_path=self.model_pusher_config.Destination_pusher_transformer_path, obj=Destination_transformer)
+            save_object(file_path=self.model_pusher_config.Source_Destination_pusher_transformer_path, obj=Source_Destination_transformer)
             save_object(file_path=self.model_pusher_config.Total_Stops_pusher_transformer_path, obj=Total_Stops_transformer)
             save_object(file_path=self.model_pusher_config.Additional_Info_pusher_transformer_path, obj=Additional_Info_transformer)
 
@@ -55,14 +53,12 @@ class ModelPusher:
 
 
             Airline_path = self.model_resolver.get_latest_save_transformer_path(config_entity.Airline_TRANSFORMER_OBJECT_FILE_NAME)
-            Source_path = self.model_resolver.get_latest_save_transformer_path(config_entity.Source_TRANSFORMER_OBJECT_FILE_NAME)
-            Destination_path = self.model_resolver.get_latest_save_transformer_path(config_entity.Destination_TRANSFORMER_OBJECT_FILE_NAME)
+            Source_Destination_path = self.model_resolver.get_latest_save_transformer_path(config_entity.Source_Destination_TRANSFORMER_OBJECT_FILE_NAME)
             Total_Stops_path = self.model_resolver.get_latest_save_transformer_path(config_entity.Total_Stops_TRANSFORMER_OBJECT_FILE_NAME)
             Additional_Info_path = self.model_resolver.get_latest_save_transformer_path(config_entity.Additional_Info_TRANSFORMER_OBJECT_FILE_NAME)
 
             save_object(file_path=Airline_path, obj=Airline_transformer)
-            save_object(file_path=Source_path, obj=Source_transformer)
-            save_object(file_path=Destination_path, obj=Destination_transformer)
+            save_object(file_path=Source_Destination_path, obj=Source_Destination_transformer)
             save_object(file_path=Total_Stops_path, obj=Total_Stops_transformer)
             save_object(file_path=Additional_Info_path, obj=Additional_Info_transformer)        
 

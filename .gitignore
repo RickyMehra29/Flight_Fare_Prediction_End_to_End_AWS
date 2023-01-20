@@ -142,7 +142,7 @@ Artifact
 logs
 prediction
 Prediction_Output
-input_files
+
 
 Flight_check_test_df.xlsx
 Flight_check_train_df.xlsx

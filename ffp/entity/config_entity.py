@@ -17,8 +17,7 @@ TARGET_COLUMN = "Price"
 MODEL_FILE_NAME = "model.pkl"
 
 Airline_TRANSFORMER_OBJECT_FILE_NAME= "Airline_transformer.pkl"
-Source_TRANSFORMER_OBJECT_FILE_NAME= "Source_transformer.pkl"
-Destination_TRANSFORMER_OBJECT_FILE_NAME= "Destination_transformer.pkl"
+Source_Destination_TRANSFORMER_OBJECT_FILE_NAME= "Source_Destination_transformer.pkl"
 Total_Stops_TRANSFORMER_OBJECT_FILE_NAME= "Total_Stops_transformer.pkl"
 Additional_Info_TRANSFORMER_OBJECT_FILE_NAME= "Additional_Info_transformer.pkl"
 
@@ -45,14 +44,7 @@ class DataIngestionConfig:
 
         except Exception  as e:
             raise FlightFareException(e,sys) 
-"""    
-    def to_dict(self):
-        try:
-            return self.__dict__
 
-        except Exception as e:
-            raise FlightFareException(e, sys)
-"""
 
 class DataValidationConfig:
      def __init__(self, training_pipeline_config: TrainingPipelineConfig):
@@ -72,8 +64,7 @@ class DataTransformationConfig:
         self.data_transformation_dir = os.path.join(training_pipeline_config.artifact_dir, "data_transformation")
 
         self.Airline_transformer_object_path = os.path.join(self.data_transformation_dir, "Transformer", Airline_TRANSFORMER_OBJECT_FILE_NAME)
-        self.Source_transformer_object_path = os.path.join(self.data_transformation_dir, "Transformer", Source_TRANSFORMER_OBJECT_FILE_NAME)
-        self.Destination_transformer_object_path = os.path.join(self.data_transformation_dir, "Transformer", Destination_TRANSFORMER_OBJECT_FILE_NAME)
+        self.Source_Destination_transformer_object_path = os.path.join(self.data_transformation_dir, "Transformer", Source_Destination_TRANSFORMER_OBJECT_FILE_NAME)
         self.Total_Stops_transformer_object_path = os.path.join(self.data_transformation_dir, "Transformer", Total_Stops_TRANSFORMER_OBJECT_FILE_NAME)
         self.Additional_Info_transformer_object_path = os.path.join(self.data_transformation_dir, "Transformer", Additional_Info_TRANSFORMER_OBJECT_FILE_NAME)
 
@@ -104,8 +95,7 @@ class ModelPusherConfig:
 
 
         self.Airline_pusher_transformer_path = os.path.join(self.model_pusher_dir, "transformer", Airline_TRANSFORMER_OBJECT_FILE_NAME)
-        self.Source_pusher_transformer_path = os.path.join(self.model_pusher_dir,"transformer", Source_TRANSFORMER_OBJECT_FILE_NAME)
-        self.Destination_pusher_transformer_path = os.path.join(self.model_pusher_dir, "transformer",Destination_TRANSFORMER_OBJECT_FILE_NAME)
+        self.Source_Destination_pusher_transformer_path = os.path.join(self.model_pusher_dir,"transformer", Source_Destination_TRANSFORMER_OBJECT_FILE_NAME)
         self.Total_Stops_pusher_transformer_path = os.path.join(self.model_pusher_dir,"transformer", Total_Stops_TRANSFORMER_OBJECT_FILE_NAME)
         self.Additional_Info_pusher_transformer_path = os.path.join(self.model_pusher_dir,"transformer", Additional_Info_TRANSFORMER_OBJECT_FILE_NAME)
 

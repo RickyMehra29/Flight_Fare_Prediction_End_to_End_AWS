@@ -16,8 +16,7 @@ class DataTransformationArtifact:
     transformed_train_path:str
     transformed_test_path:str
     Airline_transformer_object_path:str
-    Source_transformer_object_path:str
-    Destination_transformer_object_path:str
+    Source_Destination_transformer_object_path:str
     Total_Stops_transformer_object_path:str
     Additional_Info_transformer_object_path:str
 
@@ -34,5 +33,5 @@ class ModelEvaluationArtifact:
 
 @dataclass
 class ModelPusherArtifact:
-    pusher_model_dir:str    # For Timestamp local network
-    saved_model_dir:str     # For S3 Bucket"""
+    pusher_model_dir:str    
+    saved_model_dir:str     

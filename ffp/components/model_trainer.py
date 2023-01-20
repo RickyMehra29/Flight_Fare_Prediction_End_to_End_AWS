@@ -23,13 +23,10 @@ class ModelTrainer:
 
     def fine_tune(self,x,y)->Dict:
         try:
-            # Wite code for Grid Search CV
-            # Random Forest
-
             param_grid = {'criterion' : ['squared_error'],
                         'n_estimators' : [10],
                         'max_depth' : [7],
-                        'max_features':  [7],
+                        'max_features':  [6],
                         'min_samples_leaf': [5],
                         'oob_score' : [False],
                         'random_state': [42]
@@ -41,8 +38,7 @@ class ModelTrainer:
             grid.fit(x,y)
             logging.info(f"best_params_ are:{grid.best_params_}")
             return grid.best_params_
-
-            #pass
+            
         except Exception as e:
             raise FlightFareException(e, sys) 
     
