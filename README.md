@@ -1,9 +1,12 @@
 # Flight Fare Prediction:
 
+![](https://github.com/RickyMehra29/Flight_Fare_Prediction_End_to_End_AWS/blob/main/Docs/FFP_GIF.gif)
+
 The repository consists of files required for end to end implementation and deployment of Machine Learning Flight Fare Prediction web application created with Flask and deployed on the AWS platform.
 
+![ML_Dev_Steps](https://github.com/RickyMehra29/Flight_Fare_Prediction_End_to_End_AWS/blob/main/Docs/ML_Dev_Steps.jpg)
 
-### 
+![Model_Architecture](https://github.com/RickyMehra29/Flight_Fare_Prediction_End_to_End_AWS/blob/main/Docs/Model_Architecture.jpg)
 
 The Flight Fare Prediction is a Flask web application to predict airline flight fares. The dataset for the project is taken from Kaggle, and it is a time-stamped dataset so, while building the model, extensive pre-processing was done on the dataset especially on the date-time columns to finally come up with a ML model which could effectively predict airline fares across various Indian Cities. The dataset had many features which had to pre-processed and transformed into new parameters for a cleaner and simple web application layout to predict the fares. The various independent features in the dataset were:
 
@@ -39,7 +42,6 @@ In batch prediction, user can save .xlsx file in the Input_folder and can find t
 ### 
 
 
-
 ### Step 1 - Install the requirements
 
 ```bash
@@ -56,5 +58,3 @@ python app.py for instance prediction
 
 
 ```
-
-![image](https://user-images.githubusercontent.com/57321948/196933065-4b16c235-f3b9-4391-9cfe-4affcec87c35.png)
